@@ -1,1 +1,0 @@
-Hier sind die UML's zu den Programm. Der Sinn ist es im Vorheinein nachzudenken welche Klassen und Methoden ich brauche. Daher werden zuerst die UML's hochgeladen und dann erst der Code dazu geschrieben:
