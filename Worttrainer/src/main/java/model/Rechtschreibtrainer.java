@@ -65,8 +65,8 @@ public class Rechtschreibtrainer {
         return abgleich;
     }
     public String getAusgewählteBildUrl() {
-        if (ausgewähltesPaar != null) {
-            return ausgewähltesPaar.getBildUrl();
+        if (wbp != null) {
+            return wbp.getBildUrl();
         } else {
             // Es wurde kein Wort-Bild-Paar ausgewählt.
             return null;
@@ -74,15 +74,18 @@ public class Rechtschreibtrainer {
     }
 
     public String getAktuellesWort() {
-        if (ausgewähltesPaar != null) {
-            return ausgewähltesPaar.getWort();
+        if (wbp != null) {
+            return wbp.getWort();
         } else {
             // Es wurde kein Wort-Bild-Paar ausgewählt.
             return null;
         }
 
-    }
 
+    }
+    public Statistik getStatistik() {
+        return statistik;
+    }
 
 
 
