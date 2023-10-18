@@ -45,24 +45,25 @@ public class Rechtschreibtrainer {
     }
     public boolean antwortAbgleich(String antwort) {
 
+        for(WortBildPaar wbp:wortBildPaare) {
+            String korrektesWort = wbp.getWort();
 
-        String korrektesWort = wbp.getWort();
-
-        // Vergleichen Sie die Benutzerantwort (ignoriere Groß-/Kleinschreibung)
+            // Vergleichen Sie die Benutzerantwort (ignoriere Groß-/Kleinschreibung)
 
 
-        if(antwort.equalsIgnoreCase(korrektesWort)){
-            abgleich=true;
+            if (antwort.equalsIgnoreCase(korrektesWort)) {
+                abgleich = true;
+            }
+
+            // Aktualisieren Sie die Statistiken basierend auf dem Ergebnis
+            if (abgleich) {
+                statistik.versuchRecord(true);
+            } else {
+                statistik.versuchRecord(false);
+            }
         }
+            return abgleich;
 
-        // Aktualisieren Sie die Statistiken basierend auf dem Ergebnis
-        if (abgleich) {
-            statistik.versuchRecord(true);
-        } else {
-            statistik.versuchRecord(false);
-        }
-
-        return abgleich;
     }
     public String getAusgewählteBildUrl() {
         if (wbp != null) {
@@ -85,6 +86,9 @@ public class Rechtschreibtrainer {
     }
     public Statistik getStatistik() {
         return statistik;
+    }
+    public void wortBildPaarHinzufügen(WortBildPaar wbpp){
+        wortBildPaare.add(wbpp);
     }
 
 
