@@ -1,6 +1,7 @@
 package gui;
 
 import model.Rechtschreibtrainer;
+import model.WortBildPaar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,16 +17,24 @@ public class WorttrainerGUI {
         this.rt=rt;
     }
 
-    public void bildAbgleich() throws MalformedURLException {
-        URL url = new URL(rt.getAusgewählteBildUrl());
-        ImageIcon bildIcon = new ImageIcon(url);
+    public void bildAbgleich(){
+        for (WortBildPaar wortBildPaar : rt.getWortBildPaare()) {
+            URL url = null;
+            try {
+                url = new URL(wortBildPaar.getBildUrl());
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            ImageIcon bildIcon = new ImageIcon(url);
 
-        JLabel bildLabel = new JLabel(bildIcon);
-        bildLabel.setSize(new Dimension(30,20));
-        bildLabel.setIcon(bildIcon);
+            JLabel bildLabel = new JLabel(bildIcon);
+            bildLabel.setSize(new Dimension(30, 20));
+            bildLabel.setIcon(bildIcon);
 
-        String antwort = JOptionPane.showInputDialog(null,bildLabel,"GIb ein Wort ein",JOptionPane.QUESTION_MESSAGE);
-        rt.antwortAbgleich(antwort);
+            String antwort = JOptionPane.showInputDialog(null, bildLabel, "GIb ein Wort ein", JOptionPane.QUESTION_MESSAGE);
+            rt.antwortAbgleich(antwort);
+            statistikAnzeigen();
+        }
     }
     public void statistikAnzeigen(){
         JFrame frame = new JFrame("Statistik");

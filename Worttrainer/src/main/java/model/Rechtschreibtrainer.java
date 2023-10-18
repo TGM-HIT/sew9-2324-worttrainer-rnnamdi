@@ -10,16 +10,14 @@ import org.json.JSONObject;
 
 public class Rechtschreibtrainer {
     private List<WortBildPaar> wortBildPaare;
-    private WortBildPaar wbp;
     private WortBildPaar ausgewähltesPaar;
     private Statistik statistik;
 
     private boolean abgleich;
 
-    public Rechtschreibtrainer(WortBildPaar wbp, Statistik st){
+    public Rechtschreibtrainer(Statistik st){
         wortBildPaare = new ArrayList<>();
         this.statistik = st;
-        this.wbp = wbp;
     }
 
     public void paarAuswählen(int index) {
@@ -44,7 +42,7 @@ public class Rechtschreibtrainer {
         ausgewähltesPaar = wortBildPaare.get(randomIndex);
     }
     public boolean antwortAbgleich(String antwort) {
-
+        abgleich=false;
         for(WortBildPaar wbp:wortBildPaare) {
             String korrektesWort = wbp.getWort();
 
@@ -53,21 +51,23 @@ public class Rechtschreibtrainer {
 
             if (antwort.equalsIgnoreCase(korrektesWort)) {
                 abgleich = true;
+                break;
             }
 
-            // Aktualisieren Sie die Statistiken basierend auf dem Ergebnis
-            if (abgleich) {
-                statistik.versuchRecord(true);
-            } else {
-                statistik.versuchRecord(false);
-            }
+
         }
-            return abgleich;
+        // Aktualisieren Sie die Statistiken basierend auf dem Ergebnis
+        if (abgleich) {
+            statistik.versuchRecord(true);
+        } else {
+            statistik.versuchRecord(false);
+        }
+        return abgleich;
 
     }
     public String getAusgewählteBildUrl() {
-        if (wbp != null) {
-            return wbp.getBildUrl();
+        if (ausgewähltesPaar != null) {
+            return ausgewähltesPaar.getBildUrl();
         } else {
             // Es wurde kein Wort-Bild-Paar ausgewählt.
             return null;
@@ -75,8 +75,8 @@ public class Rechtschreibtrainer {
     }
 
     public String getAktuellesWort() {
-        if (wbp != null) {
-            return wbp.getWort();
+        if (ausgewähltesPaar != null) {
+            return ausgewähltesPaar.getWort();
         } else {
             // Es wurde kein Wort-Bild-Paar ausgewählt.
             return null;
@@ -87,8 +87,12 @@ public class Rechtschreibtrainer {
     public Statistik getStatistik() {
         return statistik;
     }
-    public void wortBildPaarHinzufügen(WortBildPaar wbpp){
+    public void wortBildPaarHinzufuegen(WortBildPaar wbpp){
         wortBildPaare.add(wbpp);
+    }
+
+    public List<WortBildPaar> getWortBildPaare(){
+        return wortBildPaare;
     }
 
 
