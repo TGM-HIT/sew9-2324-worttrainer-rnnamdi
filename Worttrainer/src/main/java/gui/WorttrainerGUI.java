@@ -16,7 +16,7 @@ public class WorttrainerGUI {
         this.rt=rt;
     }
 
-    public void bildAnzeigen(String bildUrl) throws MalformedURLException {
+    public void bildAbgleich() throws MalformedURLException {
         URL url = new URL(rt.getAusgewählteBildUrl());
         ImageIcon bildIcon = new ImageIcon(url);
 
@@ -25,6 +25,7 @@ public class WorttrainerGUI {
         bildLabel.setIcon(bildIcon);
 
         String antwort = JOptionPane.showInputDialog(null,bildLabel,"GIb ein Wort ein",JOptionPane.QUESTION_MESSAGE);
+        rt.antwortAbgleich(antwort);
     }
     public void statistikAnzeigen(){
         JFrame frame = new JFrame("Statistik");
