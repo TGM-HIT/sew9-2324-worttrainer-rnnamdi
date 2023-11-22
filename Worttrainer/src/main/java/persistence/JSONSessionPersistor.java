@@ -9,8 +9,18 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Diese Klasse implementiert die {SessionPersistor}-Schnittstelle und ermöglicht das Speichern
+ * und Laden von {model.Rechtschreibtrainer}-Sitzungsinformationen in JSON-Dateien.
+ */
 public class JSONSessionPersistor implements SessionPersistor {
 
+    /**
+     * Speichert die aktuelle Sitzung (WortBildPaare und Statistik) in einer JSON-Datei.
+     *
+     * @param rechtschreibtrainer Die Instanz des Rechtschreibtrainers, von welhcher die Sitzung gespeichert werden soll.
+     * @param filePath            Der Dateipfad, unter dem die JSON-Datei gespeichert wird.
+     */
     @Override
     public void save(Rechtschreibtrainer rechtschreibtrainer, String filePath) {
         JSONObject json = new JSONObject();
@@ -41,6 +51,12 @@ public class JSONSessionPersistor implements SessionPersistor {
         }
     }
 
+    /**
+     * Lädt eine zuvor gespeicherte Sitzung (Wort-Bild-Paare und Statistik) aus einer JSON-Datei.
+     *
+     * @param rechtschreibtrainer Die Instanz des Rechtschreibtrainers, in die Daten eingelesen werden.
+     * @param filePath            Der Dateipfad, von dem die JSON-Datei geladen wird.
+     */
     @Override
     public void load(Rechtschreibtrainer rechtschreibtrainer, String filePath) {
         try {

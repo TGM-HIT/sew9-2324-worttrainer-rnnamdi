@@ -1,15 +1,28 @@
 package model;
 
+/**
+ * Die Klasse {@code Statistik} repräsentiert die Statistik für den Rechtschreibtrainer.
+ */
+
 public class Statistik {
     private int versuche;
     private int korrekteVersuche;
     private int falscheVersuche;
 
+    /**
+     * Erstellt eine neue Instanz der Klasse {@code Statistik} mit initialen Werten für Versuche, korrekte und falsche Versuche.
+     */
     public Statistik(){
         versuche=0;
         korrekteVersuche=0;
         falscheVersuche=0;
     }
+
+    /**
+     * Registriert einen Versuch in der Statistik basierend auf dem Ergebnis.
+     *
+     * @param isCorrect Gibt an, ob der Versuch korrekt war.
+     */
 
     public void versuchRecord(boolean isCorrect) {
         versuche++;

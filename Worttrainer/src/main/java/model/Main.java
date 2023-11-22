@@ -3,6 +3,9 @@ package model;
 import gui.WorttrainerGUI;
 import persistence.JSONSessionPersistor;
 
+/**
+ * Die Hauptklasse für das Rechtschreibtrainer-Programm. Startet die Anwendung und führt den Bildabgleich durch.
+ */
 public class Main {
     public static void main(String[] args) {
         WortBildPaar wbp = new WortBildPaar("Hund","https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg");
