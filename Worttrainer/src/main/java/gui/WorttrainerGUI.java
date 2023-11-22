@@ -2,6 +2,7 @@ package gui;
 
 import model.Rechtschreibtrainer;
 import model.WortBildPaar;
+import persistence.SessionPersistor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +13,10 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
 public class WorttrainerGUI {
     private Rechtschreibtrainer rt;
-
-    public WorttrainerGUI(Rechtschreibtrainer rt){
+    private SessionPersistor pt;
+    public WorttrainerGUI(Rechtschreibtrainer rt , SessionPersistor pt){
         this.rt=rt;
+        this.pt=pt;
     }
 
     public void bildAbgleich(){

@@ -31,4 +31,16 @@ public class Statistik {
     public int getFalscheVersuche() {
         return falscheVersuche;
     }
+
+    public void setVersuche(int versuche) {
+        this.versuche=versuche;
+    }
+
+    public void setKorrekteVersuche(int korrekteVersuche) {
+        this.korrekteVersuche=korrekteVersuche;
+    }
+
+    public void setFalscheVersuche(int falscheVersuche) {
+        this.falscheVersuche=falscheVersuche;
+    }
 }
